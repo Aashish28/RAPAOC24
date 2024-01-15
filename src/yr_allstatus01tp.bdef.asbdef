@@ -1,0 +1,36 @@
+unmanaged implementation in class YBP_R_allstatus01TP unique;
+strict ( 2 );
+
+define behavior for YR_allstatus01TP alias allstatus
+implementation in class YBP_R_allstatus01TP unique
+etag master LocalLastChangedAt
+lock master
+authorization master( global )
+
+{
+  field (mandatory : create , readonly : update ) StatusID, Status;
+  field ( readonly )
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+
+  create;
+  update;
+  delete;
+
+  mapping for YZTSTATUS control YSallstatus01_X
+  {
+    StatusID = STATUSID;
+    Status = STATUS;
+    Text = TEXT;
+    Active = ACTIVE;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+}

@@ -1,0 +1,4 @@
+@ObjectModel.leadingEntity.name: 'YC_allstatus01TP'
+define service YUI_allstatus01 {
+  expose YC_ALLSTATUS01TP as allstatus;
+}

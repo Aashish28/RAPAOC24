@@ -1,0 +1,41 @@
+managed implementation in class YBP_R_YR_PRODUCTTP unique;
+strict ( 2 );
+
+
+define behavior for YR_YR_PRODUCTTP alias YR_PRODUCT
+implementation in class YBP_R_YR_PRODUCTTP unique
+persistent table YZTPROD
+etag master LocalLastChangedAt
+lock master
+authorization master( global )
+late numbering
+{
+  field ( readonly ) ProductID, Status,
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+
+  create;
+  update;
+  delete;
+
+  determination setInitValue on modify { create; }
+
+  mapping for YZTPROD
+  {
+    ProductID = PRODUCTID;
+    Productname = PRODUCTNAME;
+    Baseprice = BASEPRICE;
+    Currencycode = CURRENCYCODE;
+    Uom = UOM;
+    Status = STATUS;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+}

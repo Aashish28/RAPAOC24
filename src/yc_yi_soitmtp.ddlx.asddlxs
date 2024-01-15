@@ -1,0 +1,98 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Sale Item', 
+    typeNamePlural: 'Sale Items', 
+    title: {
+      type: #STANDARD, 
+      label: 'Sale Item', 
+      value: 'Soitem'
+    }
+  }, 
+  presentationVariant: [ {
+    sortOrder: [ {
+      by: 'Soitem', 
+      direction: #DESC
+    } ], 
+    visualizations: [ {
+      type: #AS_LINEITEM
+    } ]
+  } ]
+}
+annotate view YC_yi_soitmTP with
+{
+  @UI.facet: [ {
+    id: 'idyi_soitm', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Sales Item', 
+    position: 10 
+  } ]
+  @UI.hidden: true
+  ItemUUID;
+  
+  @UI.hidden: true
+  MainUUID;
+  
+  @UI.hidden: true
+  SoID;
+  
+  @UI.lineItem: [ {
+    position: 10 , 
+    importance: #HIGH, 
+    label: 'Soitem'
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'Soitem'
+  } ]
+  Soitem;
+  
+  @UI.lineItem: [ {
+    position: 20 , 
+    importance: #HIGH, 
+    label: 'ProductID'
+  } ]
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'ProductID'
+  } ]
+  ProductID;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #HIGH, 
+    label: 'Quantity'
+  } ]
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Quantity'
+  } ]
+  Quantity;
+  
+  @UI.lineItem: [ {
+    position: 40 , 
+    importance: #HIGH,
+    label: 'Price'
+  } ]
+  @UI.identification: [ {
+    position: 40, 
+    label: 'Price'
+  } ]
+  Price;
+     
+  @UI.hidden: true
+  LocalCreatedBy;
+  
+  @UI.hidden: true
+  LocalCreatedAt;
+  
+  @UI.hidden: true
+  LocalLastChangedBy;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+  
+  @UI.hidden: true
+  LastChangedAt;
+}

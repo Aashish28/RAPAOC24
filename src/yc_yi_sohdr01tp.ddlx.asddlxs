@@ -1,0 +1,138 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Sale Order', 
+    typeNamePlural: 'Sale Orders', 
+    title: {
+      type: #STANDARD, 
+      label: 'Sale Order', 
+      value: 'SoID'
+    }
+  }, 
+  presentationVariant: [ {
+    sortOrder: [ {
+      by: 'SoID', 
+      direction: #DESC
+    } ], 
+    visualizations: [ {
+      type: #AS_LINEITEM
+    } ]
+  } ]
+}
+annotate view YC_yi_sohdr01TP with
+{
+  @UI.facet: [ {
+    id: 'idCollection', 
+    type: #COLLECTION, 
+    label: 'Header', 
+    position: 10 
+  }, 
+  {
+    id: 'idIdentification', 
+    parentId: 'idCollection', 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'General Information', 
+    position: 20 
+  }, 
+  {
+    id: 'idyi_soitm', 
+    type: #LINEITEM_REFERENCE, 
+    label: 'Item', 
+    position: 30 , 
+    targetElement: '_yi_soitm'
+  } ]
+  @UI.hidden: true
+  MainUUID;
+  
+  @UI.lineItem: [ { position: 20 , importance: #HIGH, label: 'SoID'} ,
+                  { type: #FOR_ACTION, dataAction: 'setStatusInprocess', label: 'In process'},    
+                  { type: #FOR_ACTION, dataAction: 'setStatusDelivered', label: 'Delivered'},    
+                  { type: #FOR_ACTION, dataAction: 'setStatusCancel', label: 'Cancel'}    
+  ]
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'SoID'
+  },
+  { type: #FOR_ACTION, dataAction: 'setStatusInprocess', label: 'In process'}    
+   ]
+  SoID;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 30 
+  } ]
+  Customer;
+  
+  @UI.lineItem: [ {
+    position: 40 , 
+    importance: #HIGH,
+    label: 'Total Price'
+  } ]
+  @UI.identification: [ {
+    position: 40, 
+    label: 'Total Price'
+  } ]
+  Totalprice;
+  
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  Currencycode;
+  
+  @UI.lineItem: [ {
+    position: 60 , 
+    importance: #HIGH, 
+    label: 'Status'
+  } ]
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'Status'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  Status;
+  
+  @UI.lineItem: [ {
+    position: 70 , 
+    importance: #HIGH, 
+    label: 'Orderdate'
+  } ]
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'Orderdate'
+  } ]
+  Orderdate;
+  
+  @UI.lineItem: [ {
+    position: 80 , 
+    importance: #HIGH, 
+    label: 'Deliverydate'
+  } ]
+  @UI.identification: [ {
+    position: 80 , 
+    label: 'Deliverydate'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  Deliverydate;
+  
+  @UI.hidden: true
+  LocalCreatedBy;
+  
+  @UI.hidden: true
+  LocalCreatedAt;
+  
+  @UI.hidden: true
+  LocalLastChangedBy;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+  
+  @UI.hidden: true
+  LastChangedAt;
+}

@@ -1,0 +1,122 @@
+managed;
+strict ( 2 );
+with draft;
+
+define behavior for YR_yi_sohdr01TP alias yi_sohdr
+implementation in class YBP_R_yi_sohdr01TP unique
+persistent table YZTSOHDR
+draft table YYI_SOHDR00D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+
+{
+  field ( readonly )
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+  MainUUID;
+  field ( mandatory : create, readonly : update) Customer;
+  field (readonly) MainUUID,SoID,Orderdate,Status,Totalprice; //Currencycode ;
+
+
+  create ( precheck );
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  determination setInitValues on modify { field Customer; create; }
+  validation    checkDeliveryDate on save { field Deliverydate; create; update; }
+
+  internal action setStatus parameter yzae_so_status ;
+
+  action ( features : instance ) setStatusInprocess  result [1] $self;
+  action ( features : instance ) setStatusCancel parameter YZAE_SO_COMMENT result [1] $self;
+  action ( features : instance ) setStatusDelivered result [1] $self;
+  action uploaditems parameter YZAE_SO_UPLOAD result [0..*] $self;
+
+
+  mapping for YZTSOHDR
+  {
+    MainUUID = MAINUUID;
+    SoID = SOID;
+    Customer = CUSTOMER;
+    Totalprice = TOTALPRICE;
+    Currencycode = CURRENCYCODE;
+    Status = STATUS;
+    Orderdate = ORDERDATE;
+    Deliverydate = DELIVERYDATE;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+  association _yi_soitm { create; with draft; }
+
+  determination CalculateMainUUID on save { create; }
+}
+
+define behavior for YR_yi_soitmTP alias yi_soitm
+implementation in class YBP_R_yi_soitmTP unique
+persistent table YZTSOITM
+draft table YYI_SOITM00D
+etag master LocalLastChangedAt
+lock dependent by _yi_sohdr
+authorization dependent by _yi_sohdr
+
+{
+  field ( readonly : update ) ProductID ;
+  field (mandatory) Quantity;
+  field ( readonly )
+   MainUUID, SoID, Soitem,ItemUUID,//Price,Currencycode,
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   ItemUUID;
+
+
+  update;
+  delete;
+  determination setItemNumber on save { field ItemUUID; create; }
+  determination getItemPrice on modify { field Quantity; }
+  side effects { field Quantity affects field Price, field Currencycode, field _yi_sohdr.Totalprice; } //, field _yi_sohdr.Totalprice; }
+  //determination calculateTotalPrice on modify { field Price; }
+
+  //side effects { field Price affects field _yi_sohdr.Totalprice; }
+
+  mapping for YZTSOITM
+  {
+    ItemUUID = ITEMUUID;
+    MainUUID = MAINUUID;
+    SoID = SOID;
+    Soitem = SOITEM;
+    ProductID = PRODUCTID;
+    Quantity = QUANTITY;
+    Uom = UOM;
+    Price = PRICE;
+    Currencycode = CURRENCYCODE;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+  association _yi_sohdr { with draft; }
+
+  determination CalculateItemUUID on save { create; }
+}

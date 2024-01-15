@@ -1,0 +1,10 @@
+interface;
+
+define behavior for YI_YR_PRODUCTTP alias YR_PRODUCT
+use etag
+
+{
+  use create;
+  use update;
+  use delete;
+}
