@@ -3,6 +3,7 @@
 @EndUserText.label: 'CDS View forYR_PRODUCT'
 define root view entity YR_YR_PRODUCTTP
   as select from YI_YR_PRODUCT as YR_PRODUCT
+  association [0..1] to ZI_PRDSTATUS_VH as _PrdStatus on $projection.Status = _PrdStatus.Status and _PrdStatus.StatusID = 'PRD_STATUS' 
 {
   key ProductID,
   Productname,
@@ -20,6 +21,6 @@ define root view entity YR_YR_PRODUCTTP
   @Semantics.systemDateTime.localInstanceLastChangedAt: true
   LocalLastChangedAt,
   @Semantics.systemDateTime.lastChangedAt: true
-  LastChangedAt
-  
+  LastChangedAt,
+  _PrdStatus  
 }

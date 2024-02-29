@@ -21,6 +21,7 @@ define root view entity YI_yi_sohdr01TP
   LastChangedAt,
   _Currency,
   _Customer,
+  _SoStatus,
   _yi_soitm : redirected to composition child YI_yi_soitmTP
   
 }

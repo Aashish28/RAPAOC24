@@ -6,7 +6,9 @@
 "YI_YR_PRODUCT"
 ],
 "ASSOCIATED":
-[],
+[
+"ZI_PRDSTATUS_VH"
+],
 "BASE":
 [],
 "ANNO_REF":

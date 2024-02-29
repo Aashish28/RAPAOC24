@@ -1,4 +1,5 @@
 @ObjectModel.leadingEntity.name: 'YC_YR_PRODUCTTP'
 define service YUI_YR_PRODUCT {
   expose YC_YR_PRODUCTTP as YR_PRODUCT;
+  expose ZI_PRDSTATUS_VH as PrdStatusVh;
 }

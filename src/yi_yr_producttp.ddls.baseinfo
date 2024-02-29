@@ -6,9 +6,13 @@
 "YR_YR_PRODUCTTP"
 ],
 "ASSOCIATED":
-[],
+[
+"ZI_PRDSTATUS_VH"
+],
 "BASE":
-[],
+[
+"YR_YR_PRODUCTTP"
+],
 "ANNO_REF":
 [],
 "SCALAR_FUNCTION":

@@ -95,6 +95,9 @@ annotate view YC_YR_PRODUCTTP with
     position: 60 , 
     label: 'Status'
   } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
   Status;
   
   @UI.hidden: true

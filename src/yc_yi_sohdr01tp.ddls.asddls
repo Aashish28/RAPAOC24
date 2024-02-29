@@ -22,7 +22,12 @@ define root view entity YC_yi_sohdr01TP
   @Semantics.currencyCode: true
   @Consumption.valueHelpDefinition: [{entity: {name: 'I_CurrencyStdVH', element: 'Currency' }, useForValidation: true }]
   Currencycode,
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_SOSTATUS_VH' , element: 'Status' },
+                                       useForValidation: true,
+                                       label: 'Status'}]                                           
+  @ObjectModel.text.element: ['StatusText']
   Status,
+  _SoStatus.Text as StatusText,
   Orderdate,
   Deliverydate,
   LocalCreatedBy,

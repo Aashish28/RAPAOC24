@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS yzcl_console IMPLEMENTATION.
+CLASS YZCL_CONSOLE IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

@@ -6,4 +6,5 @@ define service YUI_yi_sohdr01 {
   expose I_UnitOfMeasure as UnitOfMeasure;
   expose /DMO/I_Customer as Customer;
   expose ZI_PROD_VH      as ProdVh;
+  expose ZI_SOSTATUS_VH  as SoStatusVh;
 }

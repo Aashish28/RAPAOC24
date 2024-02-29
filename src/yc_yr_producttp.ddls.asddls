@@ -22,7 +22,12 @@ define root view entity YC_YR_PRODUCTTP
   } ]
   Currencycode,
   Uom,
-  Status,
+  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_PRDSTATUS_VH' , element: 'Status' },
+                                       useForValidation: true,
+                                       label: 'Status'}]                                           
+  @ObjectModel.text.element: [ 'PrdText' ]
+  Status,  
+  _PrdStatus.Text as PrdText,
   LocalCreatedBy,
   LocalCreatedAt,
   LocalLastChangedBy,

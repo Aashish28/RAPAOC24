@@ -6,6 +6,7 @@ define root view entity YR_yi_sohdr01TP
   composition [0..*] of YR_yi_soitmTP as _yi_soitm
   association [0..1] to I_Currency as _Currency on $projection.Currencycode = _Currency.Currency
   association [0..1] to /DMO/I_Customer as _Customer on $projection.Customer = _Customer.CustomerID
+  association [0..1] to ZI_SOSTATUS_VH as _SoStatus on $projection.Status = _SoStatus.Status and _SoStatus.StatusID = 'SO_STATUS' 
 {
   key mainuuid as MainUUID,
   soid as SoID,
@@ -27,6 +28,6 @@ define root view entity YR_yi_sohdr01TP
   last_changed_at as LastChangedAt,
   _Currency,
   _Customer,
-  _yi_soitm
-  
+  _yi_soitm,
+  _SoStatus  
 }

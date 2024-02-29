@@ -3,8 +3,7 @@
 {
 "FROM":
 [
-"YR_YR_PRODUCTTP",
-"ZI_PRDSTATUS_VH"
+"YI_ALLSTATUS"
 ],
 "ASSOCIATED":
 [],

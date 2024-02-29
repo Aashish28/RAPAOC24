@@ -14,6 +14,6 @@ define root view entity YI_YR_PRODUCTTP
   LocalCreatedAt,
   LocalLastChangedBy,
   LocalLastChangedAt,
-  LastChangedAt
-  
+  LastChangedAt,
+  _PrdStatus
 }
