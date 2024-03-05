@@ -1,10 +1,16 @@
 managed implementation in class YBP_R_YR_PRODUCTTP unique;
 strict ( 2 );
-
+extensible {
+  with additional save;
+  with determinations on modify;
+  with determinations on save;
+  with validations on save;
+}
 
 define behavior for YR_YR_PRODUCTTP alias YR_PRODUCT
-implementation in class YBP_R_YR_PRODUCTTP unique
+//implementation in class YBP_R_YR_PRODUCTTP unique
 persistent table YZTPROD
+extensible
 etag master LocalLastChangedAt
 lock master
 authorization master( global )
@@ -24,7 +30,7 @@ late numbering
 
   determination setInitValue on modify { create; }
 
-  mapping for YZTPROD
+  mapping for YZTPROD corresponding extensible
   {
     ProductID = PRODUCTID;
     Productname = PRODUCTNAME;

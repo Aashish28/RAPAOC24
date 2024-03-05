@@ -1,5 +1,5 @@
 interface;
-
+extensible;
 define behavior for YI_YR_PRODUCTTP alias YR_PRODUCT
 use etag
 

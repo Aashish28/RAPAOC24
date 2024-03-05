@@ -1,11 +1,11 @@
 @Metadata.layer: #CUSTOMER
 @UI: {
   headerInfo: {
-    typeName: 'YR_PRODUCT', 
-    typeNamePlural: 'YR_PRODUCTs', 
+    typeName: 'Product', 
+    typeNamePlural: 'Products', 
     title: {
       type: #STANDARD, 
-      label: 'YR_PRODUCT', 
+      label: 'Product', 
       value: 'ProductID'
     }
   }, 
